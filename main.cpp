@@ -12,43 +12,64 @@ int main()
     nanoseconds i(0);
     nanoseconds m(0);
 
-    Tree t;
+    BST t;
     auto begin_i = steady_clock::now();
-    t.insertBST("dog");
-    t.insertBST("cat");
-    t.insertBST("bird");
-    t.insertBST("aardvark");
-    t.insertBST("zebra");
-    t.insertBST("human");
-    t.insertBST("crocodile");
+    t.BInsert("dog");
+    t.BInsert("cat");
+    t.BInsert("bird");
+    t.BInsert("aardvark");
+    t.BInsert("zebra");
+    t.BInsert("human");
+    t.BInsert("crocodile");
+    t.BInsert("ayna");
+    t.BInsert("meow");
     auto end_i = steady_clock::now();
     std::cout << "BST created successfully" << std::endl;
     i = end_i - begin_i;
 
-    Tree avl;
-    auto b = steady_clock::now();
-    t.insertAVL("elephant");
-    t.insertAVL("giraffe");
-    t.insertAVL("hippopotamus");
-    t.insertAVL("iguana");
-    t.insertAVL("aligator");
-    t.insertAVL("eminem");
-    auto g = steady_clock::now();
-    m = g - b;
-
-    std::cout << "AVL tree created successfully" << std::endl;
-    std::string searchValue = "giraffe";
-    Node *result = t.search(searchValue);
+    std::string value = "ayna";
+    Node *result = t.BSearch(value);
 
     if (result != nullptr)
     {
-        std::cout << "Node found: " << result->data << std::endl;
+        std::cout << value << " was found in the tree." << std::endl;
     }
     else
     {
-        std::cout << "Node " << result << " not found" << std::endl;
+        std::cout << value << " was not found in the tree." << std::endl;
     }
+    AVL ss;
+
+
+
+    // AVL mm;
+    // auto b = steady_clock::now();
+    // // t.insertAVL("elephant");
+    // // t.insertAVL("giraffe");
+    // // t.insertAVL("hippopotamus");
+    // // t.insertAVL("iguana");
+    // // t.insertAVL("aligator");
+    // // t.insertAVL("eminem");
+    // //     avl.print(avl.root);
+    // auto g = steady_clock::now();
+    // m = g - b;'
+    //  t.print(t.root);
+    //
+    // std::cout << "AVL tree created successfully" << std::endl;
+    // std::string searchValue = "giraffe";
+    // Node *result = t.search(searchValue);
+
+    // if (result != nullptr)
+    // {
+    //     std::cout << "Node found: " << result->data << std::endl;
+    // }
+    // else
+    // {
+    //     std::cout << "Node " << searchValue << " not found" << std::endl;
+    // }
+
     std::cout << "insert_bst insert_avl\n";
-    std::cout << i.count() << " " << m.count() << std::endl;
+    std::cout << i.count() << " " << std::endl;
+
     return 0;
 }
