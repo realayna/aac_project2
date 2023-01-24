@@ -128,7 +128,7 @@ public:
             return 0;
         return height(n->left) - height(n->right);
     }
-    Node *AVLInsert(std::string data)
+    void *AVLInsert(std::string data)
     {
         Node *nn = new Node;
         nn->data = data;
@@ -257,82 +257,85 @@ public:
                 temp = new_root;
             }
         }
+        
 
-      //  parent->height = max(height(parent->left), height(parent->right)) + 1;
-        int balance = chBalance(parent);
-        if (balance > 1 && data < st.top()->left->data)
-        {
-            Node *new_root = RRotate(st.top());
-            if (st.empty())
-            {
-                root = new_root;
-            }
-            else
-            {
-                Node *parent = st.top();
-                if (parent->left == st.top())
-                    parent->left = new_root;
-                else
-                    parent->right = new_root;
-            }
-            return new_root;
-        }
-        if (balance < -1 && data > st.top()->right->data)
-        {
-            Node *new_root = LRotate(st.top());
-            if (st.empty())
-            {
-                root = new_root;
-            }
-            else
-            {
-                Node *parent = st.top();
-                if (parent->left == st.top())
-                    parent->left = new_root;
-                else
-                    parent->right = new_root;
-            }
-            return new_root;
-        }
-        if (balance > 1 && data > st.top()->left->data)
-        {
-            Node *new_root = LRotate(st.top()->left);
-            st.top()->left = new_root;
-            new_root = RRotate(st.top());
-            if (st.empty())
-            {
-                root = new_root;
-            }
-            else
-            {
-                Node *parent = st.top();
-                if (parent->left == st.top())
-                    parent->left = new_root;
-                else
-                    parent->right = new_root;
-            }
-            return new_root;
-        }
-        if (balance < -1 && data < st.top()->right->data)
-        {
-            Node *new_root = RRotate(st.top()->right);
-            st.top()->right = new_root;
-            new_root = LRotate(st.top());
-            if (st.empty())
-            {
-                root = new_root;
-            }
-            else
-            {
-                Node *parent = st.top();
-                if (parent->left == st.top())
-                    parent->left = new_root;
-                else
-                    parent->right = new_root;
-            }
-            return new_root;
-        }
-        return root;
+     //  parent->height = max(height(parent->left), height(parent->right)) + 1;
+    //     int balance = chBalance(parent);
+    //     if (balance > 1 && data < st.top()->left->data)
+    //     {
+    //         Node *new_root = RRotate(st.top());
+    //         if (st.empty())
+    //         {
+    //             root = new_root;
+    //         }
+    //         else
+    //         {
+    //             Node *parent = st.top();
+    //             if (parent->left == st.top())
+    //                 parent->left = new_root;
+    //             else
+    //                 parent->right = new_root;
+    //         }
+    //       //  return new_root;
+    //     }
+    //     if (balance < -1 && data > st.top()->right->data)
+    //     {
+    //         Node *new_root = LRotate(st.top());
+    //         if (st.empty())
+    //         {
+    //             root = new_root;
+    //         }
+    //         else
+    //         {
+    //             Node *parent = st.top();
+    //             if (parent->left == st.top())
+    //                 parent->left = new_root;
+    //             else
+    //                 parent->right = new_root;
+    //         }
+    //      //   return new_root;
+    //     }
+    //     if (balance > 1 && data > st.top()->left->data)
+    //     {
+    //         Node *new_root = LRotate(st.top()->left);
+    //         st.top()->left = new_root;
+    //         new_root = RRotate(st.top());
+    //         if (st.empty())
+    //         {
+    //             root = new_root;
+    //         }
+    //         else
+    //         {
+    //             Node *parent = st.top();
+    //             if (parent->left == st.top())
+    //                 parent->left = new_root;
+    //             else
+    //                 parent->right = new_root;
+    //         }
+    //       //  return new_root;
+    //     }
+    //     if (balance < -1 && data < st.top()->right->data)
+    //     {
+    //         Node *new_root = RRotate(st.top()->right);
+    //         st.top()->right = new_root;
+    //         new_root = LRotate(st.top());
+    //         if (st.empty())
+    //         {
+    //             root = new_root;
+    //         }
+    //         else
+    //         {
+    //             Node *parent = st.top();
+    //             if (parent->left == st.top())
+    //                 parent->left = new_root;
+    //             else
+    //                 parent->right = new_root;
+    //         }
+    //        // return new_root;
+    //     }
+    //    // return root;
+    return root;
+
     }
 
     Node *RRotate(Node *m)
@@ -355,5 +358,18 @@ public:
         m->height = max(height(m->left), height(m->right)) + 1;
         l->height = max(height(l->left), height(l->right)) + 1;
         return l;
+    }
+    Node *ASearch(std::string data)
+    {
+        Node *now = root;
+        while (now != nullptr)
+        {
+            if (now->data == data)
+            {
+                break;
+            }
+           now =now->data < data ? now->right : now->left;
+        }
+        
     }
 };

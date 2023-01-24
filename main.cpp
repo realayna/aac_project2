@@ -27,7 +27,7 @@ int main()
     std::cout << "BST created successfully" << std::endl;
     i = end_i - begin_i;
 
-    std::string value = "ayna";
+    std::string value = "nnn";
     BNode *result = t.BSearch(value);
 
     if (result != nullptr)
@@ -38,7 +38,7 @@ int main()
     {
         std::cout << value << " was not found in the tree." << std::endl;
     }
-   
+
     AVL ss;
     auto begin_m = steady_clock::now();
 
@@ -49,10 +49,22 @@ int main()
     ss.AVLInsert("mokoko");
     ss.AVLInsert("lion");
     ss.AVLInsert("popopo");
-    auto end_m= steady_clock::now();
-    m=end_m-begin_m;
+    auto end_m = steady_clock::now();
+    m = end_m - begin_m;
+    std::string calue = "hippo";
+
+    Node *mesult = ss.ASearch(calue);
+    if (mesult != nullptr)
+    {
+        std::cout << calue << " was found in the tree." << std::endl;
+    }
+    else
+    {
+        std::cout << calue << " was not found in the tree." << std::endl;
+    }
+
     std::cout << "insert_bst insert_avl\n";
-    std::cout << i.count() << " "<< m.count() << std::endl;
+    std::cout << i.count() << " " << m.count() << std::endl;
 
     return 0;
 }
