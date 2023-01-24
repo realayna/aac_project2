@@ -28,7 +28,7 @@ int main()
     i = end_i - begin_i;
 
     std::string value = "ayna";
-    Node *result = t.BSearch(value);
+    BNode *result = t.BSearch(value);
 
     if (result != nullptr)
     {
@@ -38,38 +38,21 @@ int main()
     {
         std::cout << value << " was not found in the tree." << std::endl;
     }
+   
     AVL ss;
+    auto begin_m = steady_clock::now();
 
-
-
-    // AVL mm;
-    // auto b = steady_clock::now();
-    // // t.insertAVL("elephant");
-    // // t.insertAVL("giraffe");
-    // // t.insertAVL("hippopotamus");
-    // // t.insertAVL("iguana");
-    // // t.insertAVL("aligator");
-    // // t.insertAVL("eminem");
-    // //     avl.print(avl.root);
-    // auto g = steady_clock::now();
-    // m = g - b;'
-    //  t.print(t.root);
-    //
-    // std::cout << "AVL tree created successfully" << std::endl;
-    // std::string searchValue = "giraffe";
-    // Node *result = t.search(searchValue);
-
-    // if (result != nullptr)
-    // {
-    //     std::cout << "Node found: " << result->data << std::endl;
-    // }
-    // else
-    // {
-    //     std::cout << "Node " << searchValue << " not found" << std::endl;
-    // }
-
+    ss.AVLInsert("hippo");
+    ss.AVLInsert("kokko");
+    ss.AVLInsert("shoko");
+    ss.AVLInsert("podoso");
+    ss.AVLInsert("mokoko");
+    ss.AVLInsert("lion");
+    ss.AVLInsert("popopo");
+    auto end_m= steady_clock::now();
+    m=end_m-begin_m;
     std::cout << "insert_bst insert_avl\n";
-    std::cout << i.count() << " " << std::endl;
+    std::cout << i.count() << " "<< m.count() << std::endl;
 
     return 0;
 }
