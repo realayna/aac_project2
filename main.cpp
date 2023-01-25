@@ -71,7 +71,7 @@ int main()
     AVL qs2;
 
     std::string str("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-    std::cout << "elements binsert ainsert bsearch asearch" << std::endl;
+    //std::cout << "elements binsert ainsert bsearch asearch" << std::endl;
     for (auto i = step; i < max_size; i += step)
     {
 
@@ -155,7 +155,7 @@ int main()
 
     std::sort(words.begin(), words.end());
 
-//    std::cout << "elements ob_insert oa_insert ob_search oa_search" << std::endl;
+    std::cout << "elements ob_insert oa_insert ob_search oa_search" << std::endl;
     for (auto i = 0; i < words.size(); i++)
     {
 
@@ -217,14 +217,14 @@ int main()
             oo_a_s[i] += de;
         }
     }
-    //  for (int i = 0; i < 1000; i++)
-    // {
-    //     printf("%i %i %i %i %i\n", i, o_b_i[i], o_a_i[i], o_b_s[i], o_a_s[i]);
-    // }
-    for (int i = 0; i < max_size; i++)
+     for (int i = 0; i < 1000; i++)
     {
-        printf("%li %li %li %li %li\n", i, oo_b_i[i].count() / experiments, oo_a_i[i].count() / experiments, oo_b_s[i].count() / experiments, oo_a_s[i].count() / experiments);
+        printf("%i %i %i %i %i\n", i, o_b_i[i], o_a_i[i], o_b_s[i], o_a_s[i]);
     }
+    // for (int i = 0; i < max_size; i++)
+    // {
+    //     printf("%li %li %li %li %li\n", i, oo_b_i[i].count() / experiments, oo_a_i[i].count() / experiments, oo_b_s[i].count() / experiments, oo_a_s[i].count() / experiments);
+    // }
 
     return 0;
 }
