@@ -67,16 +67,8 @@ public:
         {
             parent->right = nn;
         }
-        // parent->height = max(height(parent->left), height(parent->right)) + 1;
     }
-    // int height(BNode *root)
-    // {
-    //     if (root == nullptr)
-    //     {
-    //         return 0;
-    //     }
-    //     return root->height;
-    // }
+
     int max(int a, int b)
     {
         return (a > b) ? a : b;
@@ -200,7 +192,7 @@ public:
                 }
                 temp = new_root;
             }
-            if (balance < -1 && data > temp->right->data)
+            else if (balance < -1 && data > temp->right->data)
             {
                 Node *new_root = LRotate(temp);
                 if (st.empty())
@@ -218,7 +210,7 @@ public:
                 temp = new_root;
             }
 
-            if (balance > 1 && data > temp->left->data)
+            else if (balance > 1 && data > temp->left->data)
             {
                 Node *new_root = LRotate(temp->left);
                 temp->left = new_root;
@@ -237,7 +229,7 @@ public:
                 }
                 temp = new_root;
             }
-            if (balance < -1 && data < temp->right->data)
+            else if (balance < -1 && data < temp->right->data)
             {
                 Node *new_root = RRotate(temp->right);
                 temp->right = new_root;
@@ -257,85 +249,8 @@ public:
                 temp = new_root;
             }
         }
-        
 
-     //  parent->height = max(height(parent->left), height(parent->right)) + 1;
-    //     int balance = chBalance(parent);
-    //     if (balance > 1 && data < st.top()->left->data)
-    //     {
-    //         Node *new_root = RRotate(st.top());
-    //         if (st.empty())
-    //         {
-    //             root = new_root;
-    //         }
-    //         else
-    //         {
-    //             Node *parent = st.top();
-    //             if (parent->left == st.top())
-    //                 parent->left = new_root;
-    //             else
-    //                 parent->right = new_root;
-    //         }
-    //       //  return new_root;
-    //     }
-    //     if (balance < -1 && data > st.top()->right->data)
-    //     {
-    //         Node *new_root = LRotate(st.top());
-    //         if (st.empty())
-    //         {
-    //             root = new_root;
-    //         }
-    //         else
-    //         {
-    //             Node *parent = st.top();
-    //             if (parent->left == st.top())
-    //                 parent->left = new_root;
-    //             else
-    //                 parent->right = new_root;
-    //         }
-    //      //   return new_root;
-    //     }
-    //     if (balance > 1 && data > st.top()->left->data)
-    //     {
-    //         Node *new_root = LRotate(st.top()->left);
-    //         st.top()->left = new_root;
-    //         new_root = RRotate(st.top());
-    //         if (st.empty())
-    //         {
-    //             root = new_root;
-    //         }
-    //         else
-    //         {
-    //             Node *parent = st.top();
-    //             if (parent->left == st.top())
-    //                 parent->left = new_root;
-    //             else
-    //                 parent->right = new_root;
-    //         }
-    //       //  return new_root;
-    //     }
-    //     if (balance < -1 && data < st.top()->right->data)
-    //     {
-    //         Node *new_root = RRotate(st.top()->right);
-    //         st.top()->right = new_root;
-    //         new_root = LRotate(st.top());
-    //         if (st.empty())
-    //         {
-    //             root = new_root;
-    //         }
-    //         else
-    //         {
-    //             Node *parent = st.top();
-    //             if (parent->left == st.top())
-    //                 parent->left = new_root;
-    //             else
-    //                 parent->right = new_root;
-    //         }
-    //        // return new_root;
-    //     }
-    //    // return root;
-    return root;
-
+        return root;
     }
 
     Node *RRotate(Node *m)
@@ -366,10 +281,11 @@ public:
         {
             if (now->data == data)
             {
-                break;
+                return now;
             }
-           now =now->data < data ? now->right : now->left;
+            now = now->data < data ? now->right : now->left;
         }
-        
+
+        return nullptr;
     }
 };
