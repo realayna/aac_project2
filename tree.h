@@ -120,7 +120,7 @@ public:
             return 0;
         return height(n->left) - height(n->right);
     }
-    void *AVLInsert(std::string data)
+    void AVLInsert(std::string data)
     {
         Node *nn = new Node;
         nn->data = data;
@@ -131,7 +131,7 @@ public:
         if (root == nullptr)
         {
             root = nn;
-            return root;
+            return;
         }
 
         Node *now = root;
@@ -155,7 +155,7 @@ public:
             else
             {
 
-                return root;
+                return;
             }
         }
 
@@ -170,6 +170,7 @@ public:
 
         while (!st.empty())
         {
+
             Node *temp = st.top();
             st.pop();
             temp->height = max(height(temp->left), height(temp->right)) + 1;
@@ -248,9 +249,13 @@ public:
                 }
                 temp = new_root;
             }
-        }
 
-        return root;
+            if (balance == 0)
+            {
+
+                return;
+            }
+        }
     }
 
     Node *RRotate(Node *m)
